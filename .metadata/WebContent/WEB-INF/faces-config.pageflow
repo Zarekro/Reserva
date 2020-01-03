@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15779995709160" configfile="/Reserva/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="conductor.xhtml" id="pf15780633196533" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15780633196534" path="/conductor.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EditConductor.xhtml" id="pf15780633196535" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15780633196534" path="/EditConductor.xhtml"/>
+  <links id="pf15780633196534" target="pf15780633196535" source="pf15780633196533" outcome="EditConductor"/>
+</pageflow:Pageflow>

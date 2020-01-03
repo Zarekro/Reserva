@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Nuevo Conductor</title>
+</h:head>
+<h:body>
+	<center>
+		<h3>DATOS DEL CONDUCTOR</h3>
+		<h:form id="frmcliente">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<p:panelGrid columns="2">
+				
+				<h:outputLabel>Nombre</h:outputLabel>
+				<p:inputText value="#{conductorController.c.nombre }"
+					required="true" requiredMessage="Ingrese nombre" />
+
+				<h:outputLabel>Apellido</h:outputLabel>
+				<p:inputText value="#{conductorController.c.apellido }"
+					required="true" requiredMessage="Ingrese Apellido" />
+
+				<h:outputLabel>DUI</h:outputLabel>
+				<p:inputText value="#{conductorController.c.dui }" required="true"
+					requiredMessage="Ingrese tel&eacute;fono" />
+
+				<h:outputLabel>N&uacute;mero de Licencia</h:outputLabel>
+				<p:inputText value="#{conductorController.c.licencia}"
+					required="true" requiredMessage="Ingrese dui" />
+
+				<h:outputLabel>Direcci&oacute;n</h:outputLabel>
+				<p:inputText value="#{conductorController.c.dirección }"
+					required="true" requiredMessage="Ingrese email" />
+
+				<h:outputLabel>Tipo de Vehiculo</h:outputLabel>
+				<p:selectOneMenu value="#{conductorController.c.tipoVehiculo}">
+					<f:selectItem itemLabel="Seleccione Tipo Vehiculo" />
+					<f:selectItem itemLabel="Toyota" itemValue="Toyota" />
+					<f:selectItem itemLabel="Honda" itemValue="Honda" />
+					<f:selectItem itemLabel="Mercedes" itemValue="Mercedes" />
+					<f:selectItem itemLabel="Nissan" itemValue="Nissan" />
+					<f:selectItem itemLabel="Mazda" itemValue="Mazda" />
+				</p:selectOneMenu>
+				<h:outputLabel></h:outputLabel>
+				<p:commandButton value="Agregar"
+					actionListener="#{conductorController.agregar()}"
+					update="frmcliente" />
+			</p:panelGrid>
+		</h:form>
+	</center>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Atras" action="conductor?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+
+</h:body>
+</h:html>

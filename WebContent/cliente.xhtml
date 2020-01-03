@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Nuevo Cliente"
+				action="NewCliente?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+	<h:form id="frmCliente">
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+		<p:dataTable id="tablaMostrarClientes" value="#{clienteController.listaCliente}" var="cc">
+			<p:column headerText="Nombre">
+				<h:outputText value="#{cc.nombre}" />
+			</p:column>
+			<p:column headerText="Apellido">
+				<h:outputText value="#{cc.apellido}" />
+			</p:column>
+			<p:column headerText="Opciones">
+				<f:facet name="header">Editar</f:facet>
+                <h:commandButton action="#{clienteController.modificar(cc.idCliente)}" value="Update" styleClass="btn btn-primary">
+                	<f:param name="idCli" value="#{cc.idCliente}" />
+                </h:commandButton>
+                <p:commandButton value="Eliminar"
+					actionListener="#{clienteController.eliminar(cc.idCliente)}"
+					update=":frmCliente:tablaMostrarClientes"  />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Regresar"
+				action="indice?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+</h:body>
+</html>

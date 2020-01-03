@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Nuevo Viaje</title>
+</h:head>
+<h:body>
+	<center>
+		<h3>DATOS DEL VIAJE</h3>
+		<h:form id="frmviaje">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<p:panelGrid columns="2">
+				<h:outputLabel>Conductor</h:outputLabel>
+				<p:selectOneMenu value="#{viajeController.c.conductor.idConductor}">
+					<f:selectItem itemLabel="Seleccione Conductor" />
+					<f:selectItems value="#{conductorController.listaConductores}"
+						var="t" itemValue="#{t.idConductor}" itemLabel="#{t.nombre}" />
+				</p:selectOneMenu>
+				<h:outputLabel>Clientes</h:outputLabel>
+				<p:selectOneMenu value="#{viajeController.c.cliente.idCliente}">
+					<f:selectItem itemLabel="Seleccione Cliente" />
+					<f:selectItems value="#{clienteController.listaCliente}" var="e"
+						itemValue="#{e.idCliente}" itemLabel="#{e.nombre}" />
+				</p:selectOneMenu>
+
+				<h:outputLabel>Fecha</h:outputLabel>
+				<p:calendar id="popup" value="#{viajeController.c.fechaViaje}" />
+
+				<h:outputLabel>Hora de Inicio</h:outputLabel>
+				<p:inputText value="#{viajeController.c.horaViaje}" />
+
+				<h:outputLabel>Origen</h:outputLabel>
+				<p:inputText value="#{viajeController.c.origen}" />
+
+				<h:outputLabel>Destino</h:outputLabel>
+				<p:inputText value="#{viajeController.c.destino}" />
+
+				<h:outputLabel>Precio</h:outputLabel>
+				<p:inputText value="#{viajeController.c.precioViaje}" />
+
+				<h:outputLabel></h:outputLabel>
+				<p:commandButton value="Agregar"
+					actionListener="#{viajeController.agregar()}" update="frmviaje" />
+			</p:panelGrid>
+		</h:form>
+	</center>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Regresar" action="viaje?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+
+</h:body>
+</h:html>

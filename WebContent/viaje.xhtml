@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Nuevo Viaje" action="NewViaje?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+	<h:form id="frmViaje">
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+		<p:dataTable value="#{viajeController.listaViajes}" var="cc">
+			<p:column headerText="Destino">
+				<h:outputText value="#{cc.destino}" />
+			</p:column>
+			<p:column headerText="Fecha">
+				<h:outputText value="#{cc.fechaViaje}" />
+			</p:column>
+			<p:column headerText="Cliente">
+				<h:outputText value="#{cc.cliente.nombre}" />
+			</p:column>
+			<p:column headerText="Conductor">
+				<h:outputText value="#{cc.conductor.nombre}" />
+			</p:column>
+			<p:column headerText="Opciones">
+				<h:commandButton
+					action="#{viajeController.modificar(cc.idViaje)}"
+					value="Update" styleClass="btn btn-primary">
+					<f:param name="idVia" value="#{cc.idViaje}" />
+				</h:commandButton>
+				<p:commandButton value="Eliminar"
+					actionListener="#{viajeController.eliminar(cc.idViaje)}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Regresar" action="indice?faces-redirect=true" />
+		</p:menubar>
+	</h:form>
+</h:body>
+</html>
